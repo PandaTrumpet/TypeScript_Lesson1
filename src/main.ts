@@ -513,23 +513,23 @@
 
 // let result = getUserNames(users);
 // console.log(result); // ['Alice', 'Bob', 'Charlie']
-type User = {
-  id: number;
-  name: string;
-}
+// type User = {
+//   id: number;
+//   name: string;
+// }
 
-const getSom = (users: User[]): string[] => {
-  return  users.map((user)=>user.name)
-}
+// const getSom = (users: User[]): string[] => {
+//   return  users.map((user)=>user.name)
+// }
 
-const me: User[] =   [
-  { id: 1, name: 'Alice' },
-  { id: 2, name: 'Bob' },
-  { id: 3, name: 'Charlie' },
-]
+// const me: User[] =   [
+//   { id: 1, name: 'Alice' },
+//   { id: 2, name: 'Bob' },
+//   { id: 3, name: 'Charlie' },
+// ]
 
-const re = getSom(me)
-console.log(re);
+// const re = getSom(me)
+// console.log(re);
 
 // type User = {
 //   id: number;
@@ -583,3 +583,462 @@ console.log(re);
 // doSomething(() => {
 //   console.log('Callback function!');
 // });
+
+
+// function a(num: number): void {
+//   console.log(num);
+  
+// }
+
+// a(2)
+
+
+// function a(callback: () => void) {
+//   callback()
+// }
+
+// a(()=>{console.log(2);
+// })
+
+
+// =================================Never========================
+
+// function throwError(message: string): never {
+//   throw new Error(message);
+// }
+
+
+// function throwError(message: number): never {
+//   throw new Error(message)
+// }
+
+// console.log(throwError("Hello"));
+
+
+// =========================Function Type=====================
+
+// let myFunc: (firstArg: string, secondArg: number) => void;
+
+// myFunc = (first: string, second: number) => {
+//   console.log(`First: ${first}, Second: ${second}`);
+// };
+
+// myFunc('Hello', 42); // Висновок: "First: Hello, Second: 42"
+
+
+
+// Визначення типу функції, який приймає два числа та повертає число
+// type CallbackType = (num1: number, num2: number) => number;
+
+// // Функція, яка приймає два числа та функцію зворотного виклику, застосовує цю функцію до чисел та виводить результат
+// function calc(param1: number, param2: number, callback: CallbackType): void {
+//   console.log('Result:', callback(param1, param2));
+// }
+
+// // Приклади використання calc з різними функціями зворотного виклику
+// calc(1, 1, (num1, num2) => num1 + num2);
+// calc(10, 5, (num1, num2) => num1 - num2);
+
+
+
+// =================================Custom Types==================================
+
+
+// type User = {
+//   id: number;
+//   name:string
+// }
+
+
+// const user: User = {
+//   id: 2,
+//   name:"Panda"
+// }
+// console.log(user);
+
+
+// type Numbers = [number, string]
+
+// type Hi = {
+//   id: number;
+//   name: string;
+//   coords: Numbers
+// }
+
+
+// const probe: Hi = {
+//   id: 2,
+//   name: "Panda",
+//   coords:[1,"Hello"]
+// }
+// console.log(probe);
+
+
+// enum AnimalIds {
+//   cat = 'cat',
+//   dog = 'dog',
+//   fish = 'fish',
+// }
+
+// type Animal = {
+//   [AnimalIds.cat]: {
+//     meow: () => string;
+//   };
+//   [AnimalIds.dog]: {
+//     bark: () => string;
+//   };
+//   [AnimalIds.fish]: {
+//     swim: () => undefined;
+//   };
+// };
+
+// // Створення об'єктів типу Animal
+// let cat: Animal[AnimalIds.cat] = {
+//   meow: () => 'Meow! I am a cat',
+// };
+
+// let dog: Animal[AnimalIds.dog] = {
+//   bark: () => 'Woof! I am a dog',
+// };
+
+// let fish: Animal[AnimalIds.fish] = {
+//   swim: () => undefined,
+// };
+
+
+
+
+// ========================================Опціональні параметри та властивості=================================
+
+
+// function greet(name?: string) {
+//   if (name) {
+//     return `Hello, ${name}!`;
+//   } else {
+//     return `Hello!`;
+//   }
+// }
+
+// console.log(greet('Alice')); // Виводить: Hello, Alice!
+// console.log(greet()); // Виводить: Hello!
+
+
+
+// function a(num?: number) {
+//   if (num) {
+//     return `Hello ${num}`
+//   } else {
+//     return "Hello"
+//   }
+// }
+
+// console.log(a(2));
+// console.log(a());
+
+
+
+// type User = {
+//   name?: string;
+//   age:number
+// }
+
+// const a: User = {
+//   age: 22,
+//   // name:"Hello"
+// }
+// console.log(a);
+
+// ===================================Різниця між Type та Interface===============================
+
+// interface Animal {
+//   name:string
+// }
+
+// const a: Animal = {
+//   name:"Cat"
+// }
+
+// console.log(a);
+
+// type An = {
+//   age:number
+// }
+
+// const b: An = {
+//   age:23
+// }
+
+// console.log(b);
+
+// interface Animal {
+//   age:number
+// }
+
+// const c: Animal = {
+//   name: "Panda",
+//   age:32
+// }
+
+// console.log(c);
+// type AnimalName = {
+//   name:string
+// }
+// type AnimalAge = {
+//   age:number
+// }
+
+// type Animal = AnimalAge & AnimalName
+
+// const c: Animal = {
+//   name: "Panda",
+//   age:21
+// }
+// console.log(c);
+
+
+// type Cat = {
+//   meow: () => string;
+// };
+
+// interface Dog {
+//   bark: () => string;
+// }
+
+// type DogOrCat = Dog | Cat;
+// type DogAndCat = Dog & Cat;
+
+// type Animal = {
+//   cat: ()=>string
+// }
+// interface Panda{
+//   bar: ()=>string
+// }
+
+// type AnAndPa = Animal | Panda
+// type AnAndPa = Animal & Panda
+
+
+
+
+// interface Animal {
+//   name: string;
+// }
+
+// interface Dog extends Animal {
+//   bark: string;
+// }
+
+// class MyDog implements Dog {
+//   name = 'Fido';
+//   bark = 'Woof!';
+// }
+
+// // Error: Property 'name' is missing in type 'OtherDog'
+// class OtherDog implements Dog {
+//   bark = 'Woof!';
+// }
+
+
+// interface Walkable {
+//   walk(): void;
+// }
+
+// interface Eatable {
+//   eat(): void;
+// }
+
+// class Animal implements Walkable, Eatable {
+//   walk() {
+//     console.log('The animal walks...');
+//   }
+
+//   eat() {
+//     console.log('The animal eats...');
+//   }
+// }
+
+// const animal = new Animal();
+// console.log(animal);
+
+// interface AddFunc {
+//   (n1: number, n2: number): number;
+// }
+
+// let add: AddFunc;
+
+// add = (n1:number, n2: number) => {
+//   return n1 + n2;
+// }
+
+
+// =========================================================Інтерфейси===========================================
+
+
+// interface Person {
+//   firstName: string;
+//   lastName: string;
+//   age?:number
+// }
+
+// function greet(person: Person) {
+//   console.log(`Hello ${person.firstName} ${person.lastName}`);
+  
+// }
+// const john: Person = {
+//   firstName: "Dima",
+//   lastName: "PAnda"
+// }
+
+// greet(john)
+
+
+// ============================Інтерфейси об'єктів=======================
+
+
+// interface IPerson {
+//   name: string;
+//   age: number;
+//   greet(phrase: string):void
+// }
+
+// let user: IPerson
+
+// user = {
+//   name: "Patrick",
+//   age: 2,
+//   greet(phrase) {
+//     console.log(phrase + this.name+ "I am"  + this.age);
+    
+//   }
+// }
+
+// user.greet("Hello,")
+
+
+// ======================Readonly=================================
+
+
+// interface IPerson {
+//   readonly name:string
+// }
+// const person: IPerson = {
+//   name: "John"
+// }
+// person.name = "Panda"///
+
+
+// ========================================Extending Interfaces=========================
+// interface IPerson {
+//   name: string;
+//   age: number;
+//   greet(phrase: string): void
+// }
+
+// interface IPilot extends IPerson {
+//   flyMesage():void
+// }
+
+// ==============================Інтерфейси як тип функції============================
+
+// interface AddFunc {
+//   (n1: number, n2: number): number;
+// }
+
+// let add: AddFunc;
+// add = (n1: number, n2: number) => {
+//   return n1+n2
+// }
+
+
+// console.log(add(1,2));
+
+// ====================================Опціональні властивості=====================================
+
+// interface IPerson {
+//   name?: string;
+//   age:number
+// }
+
+// const poly: IPerson = {
+//   age:23
+// }
+// console.log(poly.age);
+
+
+// ======================================================Advanced Types==============================================
+
+// =============Type Casting===================
+
+// let someValue: unknown = "Hell0"
+// let strLength1: number = (<string>someValue).length
+// // console.log(strLength1);
+// // or
+
+// let strLength2: number = (someValue as string).length
+// console.log(strLength2);
+
+
+// let strLength3: number = someValue.length;
+// console.log(strLength3);
+
+
+// const input = <HTMLInputElement>document.getElementById("inputEmail")
+// input.value = 'test@test.ts';
+// console.log(input);
+
+// const input = document.getElementById("email") as HTMLInputElement
+// input.value = "sjdfkljsd@lkjklfs"
+
+
+
+// const input = document.getElementById("ere")
+
+// if (input) {
+//   (input as HTMLInputElement).value = "sdfsd@jsdklf"
+// }
+
+
+// ===================Index Properties===================
+
+// type IndexType = {
+//   [prop: string]: string;
+// }
+
+// type Person = {
+//   name: string;
+//   [x:string]:string
+// }
+
+// const user: Person = {
+//   name: "Panda",
+//   gender: "Hi",
+//   por: "DDDD",
+// //  dddd:2
+// }
+
+// console.log(user);
+
+
+// type User = {
+//   id: number;
+//   name: string;
+//   email:string
+// }
+
+// type Users = {
+//   [id:string]:User
+// }
+
+// let users: Users = {}
+
+// let user: User = {
+//   id: '1',
+//   name: 'Alex',
+//   email: 'alex@example.com',
+// };
+
+// users[user.id] = user;
+// console.log(user);
+
+
+// ====================================Generics===========================================================
