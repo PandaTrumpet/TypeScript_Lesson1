@@ -463,9 +463,16 @@
 
 
 
-// ===========================Типи для методів та функцій================
+// ===========================Типи для методів та функцій=======================================================
 
 // Return Type=============
+
+
+// function a(num): number {
+//   return num
+// }
+
+// console.log(a(2));
 
 // function greet(): number [] {
 //   return [1,23,3,4]
@@ -506,7 +513,23 @@
 
 // let result = getUserNames(users);
 // console.log(result); // ['Alice', 'Bob', 'Charlie']
+type User = {
+  id: number;
+  name: string;
+}
 
+const getSom = (users: User[]): string[] => {
+  return  users.map((user)=>user.name)
+}
+
+const me: User[] =   [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Charlie' },
+]
+
+const re = getSom(me)
+console.log(re);
 
 // type User = {
 //   id: number;
@@ -553,10 +576,10 @@
 
 // lod("Jello")
 
-function doSomething(callback: () => void) {
-  callback();
-}
+// function doSomething(callback: () => void) {
+//   callback();
+// }
 
-doSomething(() => {
-  console.log('Callback function!');
-});
+// doSomething(() => {
+//   console.log('Callback function!');
+// });
