@@ -460,3 +460,103 @@
 
 
 // console.log(myButtonStyle);
+
+
+
+// ===========================Типи для методів та функцій================
+
+// Return Type=============
+
+// function greet(): number [] {
+//   return [1,23,3,4]
+// }
+
+// let result = greet();
+// console.log(result);
+
+
+// const newFun = (): string => {
+//   return "Hello"
+// }
+
+// console.log(newFun());
+
+
+// const ho = (): number[] => {
+//   return [1,2,3,4]
+// }
+
+// console.log(ho());
+
+
+// type User = {
+//   id: number;
+//   name: string;
+// };
+
+// const getUserNames = (users: User[]): string[] => {
+//   return users.map((user) => user.name);
+// };
+
+// const users: User[] = [
+//   { id: 1, name: 'Alice' },
+//   { id: 2, name: 'Bob' },
+//   { id: 3, name: 'Charlie' },
+// ];
+
+// let result = getUserNames(users);
+// console.log(result); // ['Alice', 'Bob', 'Charlie']
+
+
+// type User = {
+//   id: number;
+//   name: string
+// }
+
+// const getUser = (users: User[]): number[] => {
+//   return users.map((user)=>user.id )
+// }
+
+// const my: User[] = [
+//   { id: 1, name: 'Alice' },
+//   { id: 2, name: 'Bob' },
+//   { id: 3, name: 'Charlie' },
+// ]
+
+// console.log(getUser(my));
+
+
+// function hi() {
+//   return 23232
+// }
+
+// const greet: number = hi()
+
+// console.log(greet);
+
+
+
+// ===========================Void========================
+
+
+// function logMessage(message: string): void {
+//   console.log(message);
+// }
+
+// logMessage('Hello, world!');
+
+
+// function lod(message: string): void {
+//   console.log(message);
+  
+// }
+
+// lod("Jello")
+
+function doSomething(callback: () => void) {
+  callback();
+}
+
+doSomething(() => {
+  console.log('Callback function!');
+});
