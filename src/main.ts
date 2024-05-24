@@ -1042,3 +1042,63 @@
 
 
 // ====================================Generics===========================================================
+
+
+// let arr: Array<string | number> = []
+// arr = [2, "Hello"]
+// console.log(arr);
+
+// let b: Array<boolean | null> = []
+// b = [null, true]
+// console.log(b);
+
+
+// const promise: Promise<string> = new Promise((resolve) => {
+//   setInterval(() => {
+//     resolve('Done!');
+//   }, 1000);
+// });
+
+// promise.then((data) => {
+//   console.log(data);
+// });
+
+
+// const prom: Promise<number> = new Promise((resolve) => {
+//   setInterval(() => {
+//     resolve(2)
+//   },1200)
+// })
+
+// prom.then((data) => {
+//   console.log(data);
+  
+// })
+
+
+// function hello<T>(arg: T): T {
+//   return arg
+// }
+
+// const probe1 = hello("Hello")
+// const probe2 = hello(2)
+
+// console.log(probe2);
+
+// console.log(probe1);
+
+
+// function a<A>(arg: A): A{ 
+//   return arg
+// }
+
+// let b = a("Panda")
+// console.log(b);
+
+
+function firsElement<T>(arg: T[]) {
+  return arg[2]
+}
+
+let a = firsElement([1, 2, 3, 3, 4, 5])
+console.log(a);
