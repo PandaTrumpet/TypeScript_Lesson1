@@ -1096,9 +1096,19 @@
 // console.log(b);
 
 
-function firsElement<T>(arg: T[]) {
-  return arg[2]
+// function firsElement<T>(arg: T[]) {
+//   return arg[2]
+// }
+
+// let a = firsElement([1, 2, 3, 3, 4, 5])
+// console.log(a);
+
+
+
+function a(num1: string | number, num2: string | number) {
+  if (typeof num1 === "number" && typeof num2 === "number") {
+    return num1 + num2
+  }
 }
 
-let a = firsElement([1, 2, 3, 3, 4, 5])
-console.log(a);
+console.log(a(2,3));
